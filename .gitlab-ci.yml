@@ -35,7 +35,8 @@ linting:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
   script:
-    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    # - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} molecule test"
 
 "default-current":
   tags:
@@ -53,4 +54,5 @@ linting:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
   script:
-    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    # - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} molecule test"
