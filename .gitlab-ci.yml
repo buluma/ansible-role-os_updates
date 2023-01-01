@@ -1,5 +1,6 @@
 ---
-image: "ghcr.io/mullholland/docker-molecule-shell:latest"
+# image: "ghcr.io/mullholland/docker-molecule-shell:latest"
+image: "buluma/github-action-molecule:5.0.0"
 
 # services:
 # - docker:dind
@@ -19,7 +20,8 @@ linting:
   variables:
     COMMAND: "lint"
   script:
-    - "command=${COMMAND} /opt/molecule.sh"
+    # - "command=${COMMAND} /opt/molecule.sh"
+    - "ansible-lint"
 
 
 "default-previous":
