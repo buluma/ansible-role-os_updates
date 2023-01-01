@@ -10,9 +10,8 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "os_update-${image:-fedora}-${tag:-latest}${TOX_ENVNAME}"
-    # image: "${namespace:-ghcr.io/mullholland}/docker-molecule-${platform:-centos7}"
-    image: "${namespace:-buluma}/${image:-fedora}:${tag:-latest}"
+  - name: "${scenario:-default}-${ansible:-latest}-${platform:-centos7}"
+    image: "${namespace:-ghcr.io/mullholland}/docker-molecule-${platform:-centos7}"
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
