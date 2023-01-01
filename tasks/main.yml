@@ -1,0 +1,8 @@
+---
+- name: Import RedHat.yml
+  ansible.builtin.import_tasks: RedHat.yml
+  when: ansible_os_family == "RedHat" or ansible_os_family == "Rocky"
+
+- name: Import Debian.yml
+  ansible.builtin.import_tasks: Debian.yml
+  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"
