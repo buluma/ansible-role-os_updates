@@ -16,15 +16,20 @@ variables:
   ANSIBLE_FORCE_COLOR: 1
 
 linting:
+  tags:
+    - ec2-af-south-1
   stage: linting
   variables:
     COMMAND: "lint"
   script:
     # - "command=${COMMAND} /opt/molecule.sh"
-    - "ansible-lint"
+    - "ansible-lint ."
+    - "yamllint ."
 
 
 "default-previous":
+  tags:
+    - ec2-af-south-1
   needs:
     - "linting"
   stage: "default-previous"
@@ -32,7 +37,7 @@ linting:
     SCENARIO: "default"
     ANSIBLE: "previous"
   rules:
-    - if: $CI_COMMIT_REF_NAME == "master"
+    - if: $CI_COMMIT_REF_NAME == "testing"
   parallel:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
