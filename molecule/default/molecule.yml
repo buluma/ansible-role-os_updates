@@ -10,8 +10,9 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "${scenario:-default}-${ansible:-latest}-${platform:-os_updates}"
-    image: "${namespace:-ghcr.io/buluma}/docker-molecule-images-${platform:-centos7}"
+  - name: "${scenario:-default}-${ansible:-current}-${platform:-ubuntu2004}"
+    # image: "${namespace:-ghcr.io/buluma}/docker-molecule-${platform:-ubuntu2004}"
+    image: "buluma/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
     # image: "buluma/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
     command: /sbin/init
     volumes:
