@@ -12,7 +12,7 @@ driver:
 platforms:
   - name: "${scenario:-default}-${ansible:-current}-${platform:-ubuntu2004}"
     # image: "${namespace:-ghcr.io/buluma}/docker-molecule-${platform:-ubuntu2004}"
-    image: "buluma/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
+    image: "${namespace:-ghcr.io/buluma}/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
     # image: "buluma/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
     command: /sbin/init
     volumes:
