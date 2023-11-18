@@ -1,4 +1,4 @@
-# [os_updates](#os_updates)
+# [Ansible role os_updates](#os_updates)
 
 Ansible role to install OS updates.
 
