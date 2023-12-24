@@ -1,10 +1,10 @@
-# [Ansible role os_updates](#os_updates)
+# Ansible role [os_updates](https://galaxy.ansible.com/ui/standalone/roles/buluma/os_updates/documentation)
 
 Ansible role to install OS updates.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-os_updates/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-os_updates/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-os_updates.svg)](https://github.com/buluma/ansible-role-os_updates/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-os_updates.svg)](https://github.com/buluma/ansible-role-os_updates/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-os_updates.svg)](https://github.com/buluma/ansible-role-os_updates/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-os_updates/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-os_updates/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-os_updates.svg)](https://github.com/buluma/ansible-role-os_updates/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-os_updates.svg)](https://github.com/buluma/ansible-role-os_updates/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-os_updates.svg)](https://github.com/buluma/ansible-role-os_updates/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/os_updates)](https://galaxy.ansible.com/ui/standalone/roles/buluma/os_updates/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -89,13 +89,11 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [License](#license)
 
-[Apache-2.0](https://github.com/buluma/ansible-role-os_updates/blob/master/LICENSE).
+[Apache-2.0](https://github.com/buluma/ansible-role-os_updates/blob/master/LICENSE)
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
