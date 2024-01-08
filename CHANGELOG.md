@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-os_updates/tree/HEAD)
+## [v0.1.0](https://github.com/buluma/ansible-role-os_updates/tree/v0.1.0) (2024-01-06)
 
-[Full Changelog](https://github.com/buluma/ansible-role-os_updates/compare/c119aa9cfa0573c34991134ec4a3f883ee58a40c...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-os_updates/compare/c119aa9cfa0573c34991134ec4a3f883ee58a40c...v0.1.0)
 
 **Closed issues:**
 
