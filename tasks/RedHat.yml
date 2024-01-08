@@ -29,7 +29,7 @@
     reboot_timeout: "{{ os_updates_reboot_timeout }}"
   when:
     - (redhat_needs_restart.rc == 1 and os_updates_reboot != "NEVER") or os_updates_reboot == "ALWAYS"
-  # Docker COntianer cant reboot
+  # Docker COntainer cant reboot
   tags:
     - molecule-notest
 
