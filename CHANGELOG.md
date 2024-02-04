@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.2.0](https://github.com/buluma/ansible-role-os_updates/tree/v0.2.0) (2024-01-20)
+
+[Full Changelog](https://github.com/buluma/ansible-role-os_updates/compare/v0.1.0...v0.2.0)
+
 ## [v0.1.0](https://github.com/buluma/ansible-role-os_updates/tree/v0.1.0) (2024-01-06)
 
 [Full Changelog](https://github.com/buluma/ansible-role-os_updates/compare/c119aa9cfa0573c34991134ec4a3f883ee58a40c...v0.1.0)
