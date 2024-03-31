@@ -91,7 +91,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 |[EL](https://hub.docker.com/r/buluma/enterpriselinux)|all|
 |[Amazon](https://hub.docker.com/r/buluma/amazonlinux)|Candidate|
 |[Fedora](https://hub.docker.com/r/buluma/fedora)|all|
-|[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|all|
+|[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|focal, bionic, jammy, lunar|
 |[Debian](https://hub.docker.com/r/buluma/debian)|all|
 
 The minimum version of Ansible required is 2.12, tests have been done to:
@@ -113,4 +113,3 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 ## [Author Information](#author-information)
 
 [Shadow Walker](https://buluma.github.io/)
-
