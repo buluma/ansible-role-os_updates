@@ -14,6 +14,7 @@
   # we are updating systems, so latest packages is what we want
   tags:
     - skip_ansible_lint
+    - molecule-idempotence-notest
 
 - name: RedHat | Check if a reboot is required
   ansible.builtin.shell: needs-restarting -r
@@ -22,6 +23,7 @@
   changed_when: false
   tags:
     - skip_ansible_lint
+    - molecule-idempotence-notest
 
 - name: RedHat | Reboot machine if needed or forced
   ansible.builtin.reboot:
@@ -32,6 +34,7 @@
   # Docker COntainer cant reboot
   tags:
     - molecule-notest
+    - molecule-idempotence-notest
 
 # there is no idempotent way to clean yum cache
 # https://github.com/ansible/ansible/pull/31450#issuecomment-352889579
