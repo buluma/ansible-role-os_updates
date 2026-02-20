@@ -2,6 +2,7 @@
 - name: Converge
   hosts: all
   become: true
-  gather_facts: true
+  vars:
+    os_updates_apt_upgrade: "safe"
   roles:
-    - role: ansible-role-os_updates
+    - role: buluma.os_updates
