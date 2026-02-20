@@ -1,17 +1,19 @@
 ---
+#
 # Ansible managed
+#
 
 name: Release to Ansible Galaxy
 
 on:
   release:
-    types: [released]
+    types:
+      - published
 jobs:
   release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: galaxy
         uses: robertdebock/galaxy-action@1.2.1
         with:
-          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
-          git_branch: "main"
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}

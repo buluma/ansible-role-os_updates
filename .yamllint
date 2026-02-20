@@ -1,16 +1,20 @@
 ---
-# managed by ansible-role-doc-generator
 extends: default
 
 rules:
-  line-length:
-    max: 180
-    allow-non-breakable-words: true
-    ignore: |
-      defaults/main.yml
-    level: warning
-  truthy:
-    allowed-values: ["true", "false", "on"]
+  comments:
+    min-spaces-from-content: 1
+  braces:
+    max-spaces-inside: 1
+    level: error
+  brackets:
+    max-spaces-inside: 1
+    level: error
+  octal-values:
+    forbid-implicit-octal: true
+  line-length: disable
+  truthy: disable
+  comments-indentation: false
 
 ignore: |
   .cache/

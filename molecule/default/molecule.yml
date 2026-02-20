@@ -1,27 +1,28 @@
 ---
+#
+# Ansible managed
+#
 dependency:
   name: galaxy
   options:
     role-file: requirements.yml
+    requirements-file: requirements.yml
 lint: |
   set -e
   yamllint .
-  ansible-lint .
+  ansible-lint
 driver:
   name: docker
 platforms:
-  - name: "${scenario:-default}-${ansible:-current}-${platform:-ubuntu2004}"
-    # image: "${namespace:-ghcr.io/buluma}/docker-molecule-${platform:-ubuntu2004}"
-    image: "${namespace:-ghcr.io/buluma}/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
-    # image: "buluma/docker-molecule-images:${MOLECULE_DISTRO:-ubuntu2204}"
+  - name: "osupdates-${image:-fedora}-${tag:-latest}"
+    image: "${namespace:-buluma}/${image:-fedora}:${tag:-latest}"
     command: /sbin/init
+    cgroupns_mode: host
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     privileged: true
     pre_build_image: true
 provisioner:
   name: ansible
-  env:
-    ANSIBLE_ASYNC_DIR: /tmp/.ansible_async
 verifier:
   name: ansible
