@@ -1,6 +1,6 @@
 ---
 - name: RedHat | Install yum-utils for needs-restarting
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: yum-utils
     state: present
 
