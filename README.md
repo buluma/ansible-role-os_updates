@@ -12,26 +12,26 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- name: Converge
-  hosts: all
-  become: true
-  vars:
-    os_updates_apt_upgrade: "safe"
-  roles:
-    - role: buluma.os_updates
+  - name: Converge
+    hosts: all
+    become: true
+    vars:
+      os_updates_apt_upgrade: "safe"
+    roles:
+      - role: buluma.os_updates
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-os_updates/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-- name: Prepare
-  hosts: all
-  gather_facts: false
-  become: true
+  - name: Prepare
+    hosts: all
+    gather_facts: false
+    become: true
 
-  roles:
-    - name: buluma.bootstrap
+    roles:
+      - name: buluma.bootstrap
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.

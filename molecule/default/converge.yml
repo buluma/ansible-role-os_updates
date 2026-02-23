@@ -1,8 +1,8 @@
 ---
-- name: Converge
-  hosts: all
-  become: true
-  vars:
-    os_updates_apt_upgrade: "safe"
-  roles:
-    - role: buluma.os_updates
+  - name: Converge
+    hosts: all
+    become: true
+    vars:
+      os_updates_apt_upgrade: "safe"
+    roles:
+      - role: buluma.os_updates
