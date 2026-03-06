@@ -9,6 +9,11 @@
 - Update action [\#3](https://github.com/buluma/ansible-role-os_updates/issues/3)
 - rebuild action [\#2](https://github.com/buluma/ansible-role-os_updates/issues/2)
 
+**Merged pull requests:**
+
+- Bump alstr/todo-to-issue-action from 2.3 to 4.11 [\#5](https://github.com/buluma/ansible-role-os_updates/pull/5) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 3 to 4 [\#1](https://github.com/buluma/ansible-role-os_updates/pull/1) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v24.3.31](https://github.com/buluma/ansible-role-os_updates/tree/v24.3.31) (2024-03-31)
 
 [Full Changelog](https://github.com/buluma/ansible-role-os_updates/compare/v0.2.0...v24.3.31)
