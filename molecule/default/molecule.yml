@@ -24,5 +24,8 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      skip_tags: molecule-notest,molecule-idempotence-notest
 verifier:
   name: ansible

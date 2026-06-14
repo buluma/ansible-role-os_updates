@@ -8,18 +8,16 @@
 - name: Debian | Mark packages for hold (apt-mark)
   ansible.builtin.command: "apt-mark hold {{ item }}"
   changed_when: false
-  with_items:
-    - "{{ os_updates_apt_exclude }}"
+  loop: "{{ os_updates_apt_exclude }}"
 
 - name: Debian | Install OS Updates
   ansible.builtin.apt:
-    upgrade: "full"
+    upgrade: "{{ os_updates_apt_upgrade }}"
 
 - name: Debian | Mark packages for unhold (apt-mark)
   ansible.builtin.command: "apt-mark unhold {{ item }}"
   changed_when: false
-  with_items:
-    - "{{ os_updates_apt_exclude }}"
+  loop: "{{ os_updates_apt_exclude }}"
 
 - name: Debian | Check if a reboot is required
   ansible.builtin.stat:
