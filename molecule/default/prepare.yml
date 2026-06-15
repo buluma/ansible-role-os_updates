@@ -4,5 +4,17 @@
   gather_facts: false
   become: true
 
+  pre_tasks:
+    - name: Bootstrap
+      ansible.builtin.import_role:
+        name: buluma.bootstrap
+
+    - name: Disable sudo PAM account management for container testing
+      ansible.builtin.raw: |
+        echo 'Defaults !pam_acct_mgmt' > /etc/sudoers.d/molecule-nopamd
+        chmod 440 /etc/sudoers.d/molecule-nopamd
+      changed_when: false
+      failed_when: false
+
   roles:
     - role: buluma.bootstrap
