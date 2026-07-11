@@ -1,18 +1,13 @@
 ---
 - name: Prepare
   hosts: all
-  gather_facts: false
   become: true
+  gather_facts: false
 
   pre_tasks:
-    - name: Bootstrap
-      ansible.builtin.import_role:
-        name: buluma.bootstrap
-
-    - name: Disable sudo PAM account management for container testing
-      ansible.builtin.raw: |
-        echo 'Defaults !pam_acct_mgmt' > /etc/sudoers.d/molecule-nopamd
-        chmod 440 /etc/sudoers.d/molecule-nopamd
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo}"
+      become: false
       changed_when: false
       failed_when: false
 
