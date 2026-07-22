@@ -16,82 +16,15 @@
     - skip_ansible_lint
     - molecule-idempotence-notest
 
-- name: RedHat | DIAGNOSTIC | whoami/id
-  ansible.builtin.command: "id"
+- name: RedHat | Ensure dbus is running (a full update can leave its socket unit inactive)
+  ansible.builtin.systemd:
+    name: dbus.socket
+    state: started
   become: false
-  changed_when: false
-  register: diag_id
-  tags:
-    - skip_ansible_lint
-
-- name: RedHat | DIAGNOSTIC | show id result
-  ansible.builtin.debug:
-    var: diag_id.stdout_lines
-
-- name: RedHat | DIAGNOSTIC | systemctl is-system-running
-  ansible.builtin.command: "systemctl is-system-running"
-  become: false
-  changed_when: false
   ignore_errors: true
-  register: diag_systemctl
   tags:
     - skip_ansible_lint
-
-- name: RedHat | DIAGNOSTIC | show systemctl result
-  ansible.builtin.debug:
-    var: diag_systemctl.stdout_lines
-
-- name: RedHat | DIAGNOSTIC | dbus socket and process
-  ansible.builtin.shell: "ls -la /run/dbus/system_bus_socket; pgrep -a dbus-daemon; pgrep -a dbus-broker"
-  become: false
-  changed_when: false
-  ignore_errors: true
-  register: diag_dbus
-  tags:
-    - skip_ansible_lint
-
-- name: RedHat | DIAGNOSTIC | show dbus result
-  ansible.builtin.debug:
-    var: diag_dbus.stdout_lines
-
-- name: RedHat | DIAGNOSTIC | getenforce
-  ansible.builtin.command: "getenforce"
-  become: false
-  changed_when: false
-  ignore_errors: true
-  register: diag_selinux
-  tags:
-    - skip_ansible_lint
-
-- name: RedHat | DIAGNOSTIC | show getenforce result
-  ansible.builtin.debug:
-    var: diag_selinux.stdout_lines
-
-- name: RedHat | DIAGNOSTIC | raw sudo -n whoami, capture real stderr
-  ansible.builtin.shell: "sudo -n whoami; echo RC=$?"
-  become: false
-  changed_when: false
-  ignore_errors: true
-  register: diag_sudo
-  tags:
-    - skip_ansible_lint
-
-- name: RedHat | DIAGNOSTIC | show sudo result
-  ansible.builtin.debug:
-    var: diag_sudo
-
-- name: RedHat | DIAGNOSTIC | journalctl tail for pam/dbus/sudo
-  ansible.builtin.shell: "journalctl -n 100 --no-pager 2>&1 | grep -iE 'pam|dbus|sudo|session' || true"
-  become: false
-  changed_when: false
-  ignore_errors: true
-  register: diag_journal
-  tags:
-    - skip_ansible_lint
-
-- name: RedHat | DIAGNOSTIC | show journalctl result
-  ansible.builtin.debug:
-    var: diag_journal.stdout_lines
+    - molecule-idempotence-notest
 
 - name: RedHat | Check if a reboot is required
   ansible.builtin.shell: needs-restarting -r
