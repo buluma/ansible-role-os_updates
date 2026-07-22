@@ -16,6 +16,9 @@
     - skip_ansible_lint
     - molecule-idempotence-notest
 
+- name: RedHat | Reset connection after updating (PAM/NSS libs may have changed)
+  ansible.builtin.meta: reset_connection
+
 - name: RedHat | Check if a reboot is required
   ansible.builtin.shell: needs-restarting -r
   register: redhat_needs_restart
