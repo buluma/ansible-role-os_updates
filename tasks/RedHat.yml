@@ -16,6 +16,53 @@
     - skip_ansible_lint
     - molecule-idempotence-notest
 
+- name: DIAGNOSTIC | whoami/id (no become)
+  ansible.builtin.command: "id"
+  become: false
+  changed_when: false
+  register: diag_id
+- ansible.builtin.debug: var=diag_id.stdout_lines
+
+- name: DIAGNOSTIC | systemctl is-system-running (no become)
+  ansible.builtin.command: "systemctl is-system-running"
+  become: false
+  changed_when: false
+  ignore_errors: true
+  register: diag_systemctl
+- ansible.builtin.debug: var=diag_systemctl.stdout_lines
+
+- name: DIAGNOSTIC | dbus socket and process (no become)
+  ansible.builtin.shell: "ls -la /run/dbus/system_bus_socket; pgrep -a dbus-daemon; pgrep -a dbus-broker"
+  become: false
+  changed_when: false
+  ignore_errors: true
+  register: diag_dbus
+- ansible.builtin.debug: var=diag_dbus.stdout_lines
+
+- name: DIAGNOSTIC | getenforce (no become)
+  ansible.builtin.command: "getenforce"
+  become: false
+  changed_when: false
+  ignore_errors: true
+  register: diag_selinux
+- ansible.builtin.debug: var=diag_selinux.stdout_lines
+
+- name: DIAGNOSTIC | raw sudo -n whoami via shell, capture real stderr (no become)
+  ansible.builtin.shell: "sudo -n whoami; echo RC=$?"
+  become: false
+  changed_when: false
+  ignore_errors: true
+  register: diag_sudo
+- ansible.builtin.debug: var=diag_sudo
+
+- name: DIAGNOSTIC | journalctl tail for pam/dbus/sudo (no become)
+  ansible.builtin.shell: "journalctl -n 100 --no-pager 2>&1 | grep -iE 'pam|dbus|sudo|session' || true"
+  become: false
+  changed_when: false
+  ignore_errors: true
+  register: diag_journal
+- ansible.builtin.debug: var=diag_journal.stdout_lines
+
 - name: RedHat | Check if a reboot is required
   ansible.builtin.shell: needs-restarting -r
   register: redhat_needs_restart
