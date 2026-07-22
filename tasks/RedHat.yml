@@ -19,12 +19,6 @@
 - name: RedHat | Check if a reboot is required
   ansible.builtin.shell: needs-restarting -r
   register: redhat_needs_restart
-  # A big package update can bounce systemd/dbus, which briefly breaks
-  # sudo's PAM account phase ("Authentication service cannot retrieve
-  # authentication info") in systemd-based containers -- retry past it.
-  retries: 3
-  delay: 5
-  until: redhat_needs_restart is not failed or "PAM account management error" not in (redhat_needs_restart.module_stderr | default(""))
   ignore_errors: true
   changed_when: false
   tags:
@@ -47,10 +41,6 @@
 - name: RedHat | Clean yum cache
   ansible.builtin.command: "yum clean all"
   when: os_updates_yum_clean_cache
-  register: redhat_clean_cache
-  retries: 3
-  delay: 5
-  until: redhat_clean_cache is not failed or "PAM account management error" not in (redhat_clean_cache.module_stderr | default(""))
   tags:
     - molecule-idempotence-notest
     - skip_ansible_lint

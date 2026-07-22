@@ -4,5 +4,13 @@
   become: true
   vars:
     os_updates_apt_upgrade: "safe"
+    # Real deployments reboot after a full update if one's needed (see the
+    # "Reboot machine if needed" task, skipped here since containers can't
+    # reboot) -- that reboot is what normally clears any systemd/dbus churn
+    # from updating those packages. Without it, updating them here can
+    # leave this container's live PAM session tracking broken for every
+    # task that follows. Exclude them from the test's update; this doesn't
+    # affect the role's real default behavior.
+    os_updates_yum_exclude: "systemd*,dbus*,polkit*"
   roles:
     - role: buluma.os_updates
